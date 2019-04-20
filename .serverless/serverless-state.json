@@ -16,6 +16,19 @@
       "environment": {
         "log_level": "DEBUG"
       },
+      "tracing": true,
+      "iamRoleStatements": [
+        {
+          "Effect": "Allow",
+          "Action": [
+            "xray:PutTraceSegments",
+            "xray:PutTelemetryRecords"
+          ],
+          "Resource": [
+            "*"
+          ]
+        }
+      ],
       "versionFunctions": true,
       "remoteFunctionData": null,
       "compiledCloudFormationTemplate": {
@@ -147,6 +160,9 @@
                         ]
                       },
                       {
+                        "$ref": "$[\"service\"][\"provider\"][\"iamRoleStatements\"][0]"
+                      },
+                      {
                         "Effect": "Allow",
                         "Action": [
                           "kinesis:GetRecords",
@@ -190,7 +206,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/workshop-andreit/dev/1555767208407-2019-04-20T13:33:28.407Z/workshop-andreit.zip"
+                "S3Key": "serverless/workshop-andreit/dev/1555769016810-2019-04-20T14:03:36.810Z/workshop-andreit.zip"
               },
               "FunctionName": "workshop-andreit-dev-get-index",
               "Handler": "functions/get-index.handler",
@@ -241,6 +257,9 @@
                     ]
                   }
                 }
+              },
+              "TracingConfig": {
+                "Mode": "Active"
               }
             },
             "DependsOn": [
@@ -248,14 +267,14 @@
               "IamRoleLambdaExecution"
             ]
           },
-          "GetDashindexLambdaVersion01E4u6KtyRdCsJEpTMBX7fVdMKR9PyPP5EKLysVb4": {
+          "GetDashindexLambdaVersionwIyzG2auA4rJocJRnedmxKxEBcPXKw2kjBrwzFtWCc": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GetDashindexLambdaFunction"
               },
-              "CodeSha256": "TDRm3i0jpb6MYN5gmUJNLF0zOu9pvdZ6fFeiVPqenIo="
+              "CodeSha256": "pSzvgO6HxkI5PC6J3vdcs0zvLsTAtjc74cpsOSSyE7I="
             }
           },
           "GetDashrestaurantsLambdaFunction": {
@@ -265,7 +284,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/workshop-andreit/dev/1555767208407-2019-04-20T13:33:28.407Z/workshop-andreit.zip"
+                "S3Key": "serverless/workshop-andreit/dev/1555769016810-2019-04-20T14:03:36.810Z/workshop-andreit.zip"
               },
               "FunctionName": "workshop-andreit-dev-get-restaurants",
               "Handler": "functions/get-restaurants.handler",
@@ -291,6 +310,9 @@
                     "Ref": "restaurantsTable"
                   }
                 }
+              },
+              "TracingConfig": {
+                "Mode": "Active"
               }
             },
             "DependsOn": [
@@ -298,14 +320,14 @@
               "GetDashrestaurantsLogGroup"
             ]
           },
-          "GetDashrestaurantsLambdaVersionvyW8mAT1BJngbgT7npqDAH02eXIYza4sQYXw2lLbPM": {
+          "GetDashrestaurantsLambdaVersionFsUPOuXEr19QJpBwFdvssnm6B1CwtYSjMxWkkU1vlbQ": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "GetDashrestaurantsLambdaFunction"
               },
-              "CodeSha256": "TDRm3i0jpb6MYN5gmUJNLF0zOu9pvdZ6fFeiVPqenIo="
+              "CodeSha256": "pSzvgO6HxkI5PC6J3vdcs0zvLsTAtjc74cpsOSSyE7I="
             }
           },
           "SearchDashrestaurantsLambdaFunction": {
@@ -315,7 +337,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/workshop-andreit/dev/1555767208407-2019-04-20T13:33:28.407Z/workshop-andreit.zip"
+                "S3Key": "serverless/workshop-andreit/dev/1555769016810-2019-04-20T14:03:36.810Z/workshop-andreit.zip"
               },
               "FunctionName": "workshop-andreit-dev-search-restaurants",
               "Handler": "functions/search-restaurants.handler",
@@ -341,6 +363,9 @@
                     "Ref": "restaurantsTable"
                   }
                 }
+              },
+              "TracingConfig": {
+                "Mode": "Active"
               }
             },
             "DependsOn": [
@@ -348,14 +373,14 @@
               "SearchDashrestaurantsLogGroup"
             ]
           },
-          "SearchDashrestaurantsLambdaVersioniuvy2E0SAjHzY1kETdtYcUtze2EF4kiO2AZjdJlXqZ4": {
+          "SearchDashrestaurantsLambdaVersion2pXmdAldy37nHUUWaqjhgfPbEyjHJp599whwgdvs0Pk": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "SearchDashrestaurantsLambdaFunction"
               },
-              "CodeSha256": "TDRm3i0jpb6MYN5gmUJNLF0zOu9pvdZ6fFeiVPqenIo="
+              "CodeSha256": "pSzvgO6HxkI5PC6J3vdcs0zvLsTAtjc74cpsOSSyE7I="
             }
           },
           "PlaceDashorderLambdaFunction": {
@@ -365,7 +390,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/workshop-andreit/dev/1555767208407-2019-04-20T13:33:28.407Z/workshop-andreit.zip"
+                "S3Key": "serverless/workshop-andreit/dev/1555769016810-2019-04-20T14:03:36.810Z/workshop-andreit.zip"
               },
               "FunctionName": "workshop-andreit-dev-place-order",
               "Handler": "functions/place-order.handler",
@@ -391,6 +416,9 @@
                     "Ref": "orderEventsStream"
                   }
                 }
+              },
+              "TracingConfig": {
+                "Mode": "Active"
               }
             },
             "DependsOn": [
@@ -398,14 +426,14 @@
               "PlaceDashorderLogGroup"
             ]
           },
-          "PlaceDashorderLambdaVersionQq9EhBIS5jhn0Hv3lS51aM73IPkyPfvz5bfFMobZk": {
+          "PlaceDashorderLambdaVersionDDzIID1inWm2CYMYqyJzWimPZuUlzPp4UgXagoHjXo": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "PlaceDashorderLambdaFunction"
               },
-              "CodeSha256": "TDRm3i0jpb6MYN5gmUJNLF0zOu9pvdZ6fFeiVPqenIo="
+              "CodeSha256": "pSzvgO6HxkI5PC6J3vdcs0zvLsTAtjc74cpsOSSyE7I="
             }
           },
           "NotifyDashrestaurantLambdaFunction": {
@@ -415,7 +443,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/workshop-andreit/dev/1555767208407-2019-04-20T13:33:28.407Z/workshop-andreit.zip"
+                "S3Key": "serverless/workshop-andreit/dev/1555769016810-2019-04-20T14:03:36.810Z/workshop-andreit.zip"
               },
               "FunctionName": "workshop-andreit-dev-notify-restaurant",
               "Handler": "functions/notify-restaurant.handler",
@@ -444,6 +472,9 @@
                     "Ref": "restaurantNotificationTopic"
                   }
                 }
+              },
+              "TracingConfig": {
+                "Mode": "Active"
               }
             },
             "DependsOn": [
@@ -451,14 +482,14 @@
               "NotifyDashrestaurantLogGroup"
             ]
           },
-          "NotifyDashrestaurantLambdaVersionQWl6hYDSY8Qadyz3S1822eT3CFv0By7ctV8hdlH2A": {
+          "NotifyDashrestaurantLambdaVersionoXMYUgog46Ycfrn62cUdewxLSSeaqyaQXCVbtWwxbiE": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "NotifyDashrestaurantLambdaFunction"
               },
-              "CodeSha256": "TDRm3i0jpb6MYN5gmUJNLF0zOu9pvdZ6fFeiVPqenIo="
+              "CodeSha256": "pSzvgO6HxkI5PC6J3vdcs0zvLsTAtjc74cpsOSSyE7I="
             }
           },
           "ApiGatewayRestApi": {
@@ -689,7 +720,7 @@
               "MethodResponses": []
             }
           },
-          "ApiGatewayDeployment1555767194661": {
+          "ApiGatewayDeployment1555769003167": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -960,6 +991,9 @@
                         ]
                       },
                       {
+                        "$ref": "$[\"service\"][\"provider\"][\"iamRoleStatements\"][0]"
+                      },
+                      {
                         "Effect": "Allow",
                         "Action": "dynamodb:scan",
                         "Resource": {
@@ -1038,6 +1072,9 @@
                         ]
                       },
                       {
+                        "$ref": "$[\"service\"][\"provider\"][\"iamRoleStatements\"][0]"
+                      },
+                      {
                         "Effect": "Allow",
                         "Action": "dynamodb:scan",
                         "Resource": {
@@ -1114,6 +1151,9 @@
                             "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/workshop-andreit-dev-place-order:*:*"
                           }
                         ]
+                      },
+                      {
+                        "$ref": "$[\"service\"][\"provider\"][\"iamRoleStatements\"][0]"
                       },
                       {
                         "Effect": "Allow",
@@ -1203,9 +1243,12 @@
                         ],
                         "Resource": [
                           {
-                            "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"IamRoleLambdaExecution\"][\"Properties\"][\"Policies\"][0][\"PolicyDocument\"][\"Statement\"][2][\"Resource\"][0]"
+                            "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"IamRoleLambdaExecution\"][\"Properties\"][\"Policies\"][0][\"PolicyDocument\"][\"Statement\"][3][\"Resource\"][0]"
                           }
                         ]
+                      },
+                      {
+                        "$ref": "$[\"service\"][\"provider\"][\"iamRoleStatements\"][0]"
                       },
                       {
                         "Effect": "Allow",
@@ -1302,31 +1345,31 @@
           "GetDashindexLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GetDashindexLambdaVersion01E4u6KtyRdCsJEpTMBX7fVdMKR9PyPP5EKLysVb4"
+              "Ref": "GetDashindexLambdaVersionwIyzG2auA4rJocJRnedmxKxEBcPXKw2kjBrwzFtWCc"
             }
           },
           "GetDashrestaurantsLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "GetDashrestaurantsLambdaVersionvyW8mAT1BJngbgT7npqDAH02eXIYza4sQYXw2lLbPM"
+              "Ref": "GetDashrestaurantsLambdaVersionFsUPOuXEr19QJpBwFdvssnm6B1CwtYSjMxWkkU1vlbQ"
             }
           },
           "SearchDashrestaurantsLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "SearchDashrestaurantsLambdaVersioniuvy2E0SAjHzY1kETdtYcUtze2EF4kiO2AZjdJlXqZ4"
+              "Ref": "SearchDashrestaurantsLambdaVersion2pXmdAldy37nHUUWaqjhgfPbEyjHJp599whwgdvs0Pk"
             }
           },
           "PlaceDashorderLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "PlaceDashorderLambdaVersionQq9EhBIS5jhn0Hv3lS51aM73IPkyPfvz5bfFMobZk"
+              "Ref": "PlaceDashorderLambdaVersionDDzIID1inWm2CYMYqyJzWimPZuUlzPp4UgXagoHjXo"
             }
           },
           "NotifyDashrestaurantLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "NotifyDashrestaurantLambdaVersionQWl6hYDSY8Qadyz3S1822eT3CFv0By7ctV8hdlH2A"
+              "Ref": "NotifyDashrestaurantLambdaVersionoXMYUgog46Ycfrn62cUdewxLSSeaqyaQXCVbtWwxbiE"
             }
           },
           "ServiceEndpoint": {
@@ -1386,11 +1429,15 @@
       "logLevel": {
         "prod": "INFO",
         "default": "DEBUG"
+      },
+      "serverless-iam-roles-per-function": {
+        "defaultInherit": true
       }
     },
     "plugins": [
       "serverless-pseudo-parameters",
-      "serverless-iam-roles-per-function"
+      "serverless-iam-roles-per-function",
+      "serverless-plugin-tracing"
     ],
     "pluginsData": {},
     "functions": {
@@ -1456,7 +1503,7 @@
         },
         "iamRoleStatements": [
           {
-            "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"GetDashrestaurantsIamRoleLambdaExecution\"][\"Properties\"][\"Policies\"][0][\"PolicyDocument\"][\"Statement\"][1]"
+            "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"GetDashrestaurantsIamRoleLambdaExecution\"][\"Properties\"][\"Policies\"][0][\"PolicyDocument\"][\"Statement\"][2]"
           }
         ],
         "name": "workshop-andreit-dev-get-restaurants",
@@ -1484,7 +1531,7 @@
         },
         "iamRoleStatements": [
           {
-            "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"SearchDashrestaurantsIamRoleLambdaExecution\"][\"Properties\"][\"Policies\"][0][\"PolicyDocument\"][\"Statement\"][1]"
+            "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"SearchDashrestaurantsIamRoleLambdaExecution\"][\"Properties\"][\"Policies\"][0][\"PolicyDocument\"][\"Statement\"][2]"
           }
         ],
         "name": "workshop-andreit-dev-search-restaurants",
@@ -1512,7 +1559,7 @@
         },
         "iamRoleStatements": [
           {
-            "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"PlaceDashorderIamRoleLambdaExecution\"][\"Properties\"][\"Policies\"][0][\"PolicyDocument\"][\"Statement\"][1]"
+            "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"PlaceDashorderIamRoleLambdaExecution\"][\"Properties\"][\"Policies\"][0][\"PolicyDocument\"][\"Statement\"][2]"
           }
         ],
         "name": "workshop-andreit-dev-place-order",
@@ -1529,7 +1576,7 @@
             "stream": {
               "type": "kinesis",
               "arn": {
-                "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"IamRoleLambdaExecution\"][\"Properties\"][\"Policies\"][0][\"PolicyDocument\"][\"Statement\"][2][\"Resource\"][0]"
+                "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"IamRoleLambdaExecution\"][\"Properties\"][\"Policies\"][0][\"PolicyDocument\"][\"Statement\"][3][\"Resource\"][0]"
               }
             }
           }
@@ -1544,10 +1591,10 @@
         },
         "iamRoleStatements": [
           {
-            "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"NotifyDashrestaurantIamRoleLambdaExecution\"][\"Properties\"][\"Policies\"][0][\"PolicyDocument\"][\"Statement\"][2]"
+            "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"NotifyDashrestaurantIamRoleLambdaExecution\"][\"Properties\"][\"Policies\"][0][\"PolicyDocument\"][\"Statement\"][3]"
           },
           {
-            "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"NotifyDashrestaurantIamRoleLambdaExecution\"][\"Properties\"][\"Policies\"][0][\"PolicyDocument\"][\"Statement\"][3]"
+            "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"NotifyDashrestaurantIamRoleLambdaExecution\"][\"Properties\"][\"Policies\"][0][\"PolicyDocument\"][\"Statement\"][4]"
           }
         ],
         "name": "workshop-andreit-dev-notify-restaurant",
@@ -1613,7 +1660,7 @@
     "artifact": "/mnt/c/Projects/production-ready-serverless-workshop-devexperience-demo/.serverless/workshop-andreit.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/workshop-andreit/dev/1555767208407-2019-04-20T13:33:28.407Z",
+    "artifactDirectoryName": "serverless/workshop-andreit/dev/1555769016810-2019-04-20T14:03:36.810Z",
     "artifact": "workshop-andreit.zip"
   }
 }
