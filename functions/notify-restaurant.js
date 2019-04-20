@@ -3,7 +3,9 @@ const Log = require('../lib/log')
 const _ = require('lodash')
 const { getRecords } = require('../lib/kinesis')
 const AWSXRay = require('aws-xray-sdk-core')
-const AWS = AWSXRay.captureAWS(require('aws-sdk'))
+const AWS = process.env.LAMBDA_RUNTIME_DIR
+  ? AWSXRay.captureAWS(require('aws-sdk'))
+  : require('aws-sdk')
 const kinesis = new AWS.Kinesis()
 const sns = new AWS.SNS()
 
