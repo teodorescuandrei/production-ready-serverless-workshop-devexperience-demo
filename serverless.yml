@@ -22,6 +22,7 @@ provider:
     TEAM: test
   environment:
     log_level: ${self:custom.logLevel.${self:custom.stage}, self:custom.logLevel.default}
+    STAGE: ${self:custom.stage}  ## <- add this guy! (without this comment :-P)
   tracing: true
   iamRoleStatements:
     - Effect: "Allow"
